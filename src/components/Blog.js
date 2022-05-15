@@ -1,5 +1,5 @@
 const Blog = ({blog}) => (
-  <table style={{width: '50%'}}>
+  <table>
     <tbody>
       <tr>
         <td><a href={blog.url} title={blog.title} alt={blog.title}>

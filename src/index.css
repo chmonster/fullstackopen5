@@ -17,3 +17,14 @@
   padding: 10px;
   margin-bottom: 10px;
 }
+
+table {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  margin-left: auto;
+  margin-right: auto;
+}
