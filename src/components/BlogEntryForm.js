@@ -1,6 +1,11 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-const BlogEntryForm = ({createBlog, user}) => { 
+const BlogEntryForm = ({ createBlog }) => {
+
+  BlogEntryForm.propTypes = {
+    createBlog: PropTypes.func.isRequired
+  }
 
   const [newTitle, setNewTitle] = useState('')
   const [newUrl, setNewUrl] = useState('')

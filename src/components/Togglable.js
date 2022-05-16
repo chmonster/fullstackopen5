@@ -1,6 +1,13 @@
 import { useState, forwardRef, useImperativeHandle } from 'react'
+import PropTypes from 'prop-types'
 
 const Togglable = forwardRef ((props, ref) => {
+  Togglable.displayName = 'Togglable'
+
+  Togglable.propTypes = {
+    buttonLabel: PropTypes.string.isRequired
+  }
+
   const [visible, setVisible] = useState(false)
 
   const hideWhenVisible = { display: visible ? 'none' : '' }
@@ -16,7 +23,7 @@ const Togglable = forwardRef ((props, ref) => {
     }
   })
 
-  const buttonStyle = { 
+  const buttonStyle = {
     display: 'flex',
     justifyContent: 'center',
     marginLeft: 'auto',
@@ -24,7 +31,7 @@ const Togglable = forwardRef ((props, ref) => {
   }
 
   return (
-    <div style={{ justifyContent: 'center'}}>
+    <div style={{ justifyContent: 'center' }}>
       <div style={hideWhenVisible}>
         <button onClick={toggleVisibility} style={buttonStyle}>{props.buttonLabel}</button>
       </div>

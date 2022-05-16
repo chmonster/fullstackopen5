@@ -11,7 +11,7 @@ import loginService from './services/login'
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [user, setUser] = useState(null)
-  const [message, setMessage] = useState({ 'text': null, 'type': null })  
+  const [message, setMessage] = useState({ 'text': null, 'type': null })
 
   const togglableLoginRef = useRef()
   const togglableBlogRef = useRef()
@@ -20,12 +20,12 @@ const App = () => {
   const doMessage = (text, type) => {
     setMessage({ text: text, type: type })
     setTimeout(() => {
-    setMessage({ text: null, type: null })
+      setMessage({ text: null, type: null })
     }, 5000)
   }
 
   const incLike = async (blog) => {
-    const updatedBlog = {...blog, likes: blog.likes+1}
+    const updatedBlog = { ...blog, likes: blog.likes+1 }
     try {
       await blogService.update(blog.id, updatedBlog)
       doMessage(`You liked '${updatedBlog.title}'`, 'confirm')
@@ -42,7 +42,7 @@ const App = () => {
       {
         await blogService.remove(blog.id)
         doMessage(`'${blogDeleted}' deleted`, 'confirm')
-      } 
+      }
     } catch(error) {
       console.log(error)
       doMessage(error.response.data.error, 'error')
@@ -60,7 +60,7 @@ const App = () => {
       })
       window.localStorage.setItem(
         'loggedBlogappUser', JSON.stringify(user)
-      ) 
+      )
       blogService.setToken(user.token)
       setUser(user)
       loginRef.current.setUsername('')
@@ -68,7 +68,7 @@ const App = () => {
       doMessage(`${user.name} logged in`, 'confirm')
     } catch (exception) {
       doMessage('Wrong credentials', 'error')
-    } 
+    }
   }
 
   const handleLogout = async (event) => {
@@ -77,7 +77,7 @@ const App = () => {
     try {
       window.localStorage.removeItem('loggedBlogappUser')
       blogService.setToken(null)
-      doMessage(`${user.username} logged out`, 'confirm')    
+      doMessage(`${user.username} logged out`, 'confirm')
       setUser(null)
       console.log(loginRef.current)
     } catch(error) {
@@ -101,7 +101,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    blogService.getAll().then(blogs => setBlogs(blogs))  
+    blogService.getAll().then(blogs => setBlogs(blogs))
   }, [blogs])
 
   useEffect(() => {
@@ -122,7 +122,7 @@ const App = () => {
       </div>
     )
   }
-  
+
   const blogForm = () => (
     <>
       <Togglable buttonLabel='new blog' ref={togglableBlogRef}>
@@ -138,14 +138,14 @@ const App = () => {
       {user === null ? loginForm() : blogForm()}
       {blogs.sort((a,b) => (b.likes - a.likes))
         .map(blog =>
-          <Blog 
-            key={blog.id} 
-            blog={blog} 
+          <Blog
+            key={blog.id}
+            blog={blog}
             incLike={incLike}
-            user={user} 
-            deleteBlog={deleteBlog} 
+            user={user}
+            deleteBlog={deleteBlog}
           />
-      )}
+        )}
     </div>
   )
 }

@@ -1,9 +1,16 @@
-const Header = ({user, handleLogout}) => {
+import PropTypes from 'prop-types'
+
+const Header = ({ user, handleLogout }) => {
+
+  Header.propTypes = {
+    handleLogout: PropTypes.func.isRequired
+  }
+
   return (
     <div>
-      <h2 style={{textAlign: 'center'}}>Blog List</h2>
+      <h2 style={{ textAlign: 'center' }}>Blog List</h2>
       {user &&
-        <div style={{ textAlign: 'center', justifyContent: 'full'}}>
+        <div style={{ textAlign: 'center', justifyContent: 'full' }}>
           {user.username} ({user.name}) logged in <button onClick={handleLogout}>Log out</button>
         </div>
       }
