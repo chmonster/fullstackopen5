@@ -19,7 +19,7 @@ const LoginForm = forwardRef((props, ref) => {
   })
 
   return (
-    <>
+    <div className='loginform'>
       <form onSubmit={onSubmit} style={{ textAlign: 'center' }}>
         Username:
         <input
@@ -38,7 +38,7 @@ const LoginForm = forwardRef((props, ref) => {
         <br />
         <button type="submit">log in</button>
       </form>
-    </>
+    </div>
   )
 })
 

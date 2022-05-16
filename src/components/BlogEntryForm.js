@@ -30,19 +30,19 @@ const BlogEntryForm = ({ createBlog }) => {
   }
 
   return (
-    <>
+    <div className='blogEntryForm'>
       <h2 style={{ textAlign: 'center' }}>Enter a Blog</h2>
       <form onSubmit={addBlog}>
         <table><tbody>
           <tr style={{ display: 'flex', justifyContent: 'center' }}>
             <td>
-              Title<input value={newTitle} onChange={handleTitleChange} />
+              <input value={newTitle} onChange={handleTitleChange} placeholder = 'title' />
             </td>
             <td>
-              URL<input value={newUrl} onChange={handleUrlChange} />
+              <input value={newUrl} onChange={handleUrlChange} placeholder = 'URL' />
             </td>
             <td>
-              Author<input value={newAuthor} onChange={handleAuthorChange} />
+              <input value={newAuthor} onChange={handleAuthorChange} placeholder='author' />
             </td>
             <td>
               <button type="submit">save</button>
@@ -50,7 +50,7 @@ const BlogEntryForm = ({ createBlog }) => {
           </tr>
         </tbody></table>
       </form>
-    </>
+    </div>
   )
 }
 

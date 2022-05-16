@@ -31,11 +31,11 @@ const Togglable = forwardRef ((props, ref) => {
   }
 
   return (
-    <div style={{ justifyContent: 'center' }}>
+    <div className='togglable'>
       <div style={hideWhenVisible}>
         <button onClick={toggleVisibility} style={buttonStyle}>{props.buttonLabel}</button>
       </div>
-      <div style={showWhenVisible}>
+      <div style={showWhenVisible} className='togglableContent'>
         {props.children}
         <button onClick={toggleVisibility} style={buttonStyle}>cancel</button>
       </div>

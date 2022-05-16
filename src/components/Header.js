@@ -7,7 +7,7 @@ const Header = ({ user, handleLogout }) => {
   }
 
   return (
-    <div>
+    <div className='header'>
       <h2 style={{ textAlign: 'center' }}>Blog List</h2>
       {user &&
         <div style={{ textAlign: 'center', justifyContent: 'full' }}>

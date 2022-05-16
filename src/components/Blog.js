@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const Blog = ({ blog, user, incLike, deleteBlog }) => {
 
-  Blog.propTypes = {
+  /*Blog.propTypes = {
     incLike: PropTypes.func.isRequired,
     deleteBlog: PropTypes.func.isRequired
-  }
+  }*/
 
   const [expand, setExpand] = useState(false)
 
@@ -19,7 +19,7 @@ const Blog = ({ blog, user, incLike, deleteBlog }) => {
   //console.log(userID, blog.user.id.toString())
 
   return (
-    <><table><tbody>
+    <div className='blog'><table><tbody>
       <tr>
         <td><a href={blog.url} title={blog.title} alt={blog.title}>
           {blog.title}
@@ -43,7 +43,7 @@ const Blog = ({ blog, user, incLike, deleteBlog }) => {
           </td>
         </tr>
       }
-    </tbody></table></>
+    </tbody></table></div>
   )
 }
 
