@@ -1,12 +1,6 @@
 import { useState } from 'react'
-//import PropTypes from 'prop-types'
 
 const Blog = ({ blog, user, incLike, deleteBlog }) => {
-
-  /*Blog.propTypes = {
-    incLike: PropTypes.func.isRequired,
-    deleteBlog: PropTypes.func.isRequired
-  }*/
 
   const [expand, setExpand] = useState(false)
 

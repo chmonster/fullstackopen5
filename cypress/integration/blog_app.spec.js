@@ -14,31 +14,41 @@ describe('Blog app', function() {
     cy.contains('Blog List')
   })
 
-  it('bad login rejected', function() {
+  it('login form can be opened (5.17)', function() {
     cy.contains('log in').click()
-    cy.get('#username').type('test')
-    cy.get('#password').type('nonsense')
-    cy.get('#login-button').click()
-
-    cy.get('.error').should('contain', 'Wrong credentials')
-      .and('have.css', 'color', 'rgb(255, 0, 0)')
-      .and('have.css', 'border-style', 'solid')
-
-    cy.get('.header').should('not.contain', 'logged in')
+    cy.get('html')
+      .should('contain', 'Username')
+      .should('contain', 'Password')
+      .should('not.contain', '.blog')
   })
 
-  it('good login processed', function() {
-    cy.contains('log in').click()
-    cy.get('#username').type('test')
-    cy.get('#password').type('P4ss0rF41l')
-    cy.get('#login-button').click()
-    cy.get('.confirm')
-      .should('contain', 'logged in')
-      .and('have.css', 'color', 'rgb(0, 0, 255)')
-      .and('have.css', 'border-style', 'solid')
-    cy.get('.header')
-      .should('contain', 'test')
-      .and('contain','logged in')
+  describe('Login (5.18) ', function() {
+    it('bad login rejected', function() {
+      cy.contains('log in').click()
+      cy.get('#username').type('test')
+      cy.get('#password').type('nonsense')
+      cy.get('#login-button').click()
+
+      cy.get('.error').should('contain', 'Wrong credentials')
+        .and('have.css', 'color', 'rgb(255, 0, 0)')
+        .and('have.css', 'border-style', 'solid')
+
+      cy.get('.header').should('not.contain', 'logged in')
+    })
+
+    it('good login processed', function() {
+      cy.contains('log in').click()
+      cy.get('#username').type('test')
+      cy.get('#password').type('P4ss0rF41l')
+      cy.get('#login-button').click()
+      cy.get('.confirm')
+        .should('contain', 'logged in')
+        .and('have.css', 'color', 'rgb(0, 0, 255)')
+        .and('have.css', 'border-style', 'solid')
+      cy.get('.header')
+        .should('contain', 'test')
+        .and('contain','logged in')
+    })
   })
 
   describe('when logged in', function() {
@@ -46,7 +56,7 @@ describe('Blog app', function() {
       cy.login({ username: 'test', password: 'P4ss0rF41l' })
     })
 
-    it('a new blog can be created', function() {
+    it('a new blog can be created (5.19)', function() {
       cy.get('.toggle').should('contain', 'new blog').click()
       cy.get('#title').type('The Moon is Made of Cheese')
       cy.get('#url').type('http://cheese.moon.com')
@@ -78,7 +88,7 @@ describe('Blog app', function() {
         })
       })
 
-      it('Blog likes can be incremented', function () {
+      it('Blog likes can be incremented (5.20)', function () {
         cy.get('.blog').eq(2)
           .should('contain', 'Not Made of Moon')
           .find('.view')
@@ -99,7 +109,7 @@ describe('Blog app', function() {
           .should('not.contain', 'Likes:')
       })
 
-      it('A blog can be deleted', function () {
+      it('A blog can be deleted (5.21)', function () {
         cy.get('.blog').eq(1)
           .should('contain', 'Not Made of Cheese')
           .find('.delete')
@@ -112,7 +122,7 @@ describe('Blog app', function() {
           .should('not.contain', 'John Paul Cheese Jr.')
       })
 
-      it('A blog cannot be deleted by someone else', function () {
+      it('A blog cannot be deleted by someone else (5.21a)', function () {
 
         const user0 = {
           name: 'George W. Wilbur',
@@ -129,7 +139,7 @@ describe('Blog app', function() {
 
       })
 
-      it('Blogs are sorted by number of likes', function () {
+      it('Blogs are sorted by number of likes (5.22)', function () {
 
         cy.get('.blog').eq(0).should('contain', 'The Moon is Made of Cheese')
           .find('.view')

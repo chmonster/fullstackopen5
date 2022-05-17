@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import BlogEntryForm from './BlogEntryForm'
 import userEvent from '@testing-library/user-event'
 
-test('<BlogEntryForm /> updates parent state and calls createBlog', async () => {
+test('<BlogEntryForm /> updates parent state and calls createBlog (5.16)', async () => {
   const createBlog = jest.fn()
   const user = userEvent.setup()
 

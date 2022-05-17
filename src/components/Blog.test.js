@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Blog from './Blog'
 
-test('renders content for unexpanded blog', () => {
+test('renders content for unexpanded blog (5.13)', () => {
   const blog = {
     title: 'Component testing is done with react-testing-library',
     url: 'http://www.testing.com',
@@ -17,7 +17,6 @@ test('renders content for unexpanded blog', () => {
 
   const { container } = render(<Blog blog={blog} />)
 
-  //screen.debug()
 
   const div = container.querySelector('.blog')
   expect(div).toHaveTextContent(
@@ -34,7 +33,7 @@ test('renders content for unexpanded blog', () => {
   )
 })
 
-test('handles expanded blog when clicked', async () => {
+test('handles expanded blog when clicked (5.14)', async () => {
   const blog = {
     title: 'Component testing is done with react-testing-library',
     url: 'http://www.testing.com',
@@ -45,17 +44,12 @@ test('handles expanded blog when clicked', async () => {
     }
   }
 
-  //const mockHandler = jest.fn()
   const user = userEvent.setup()
   const { container } = render(<Blog blog={blog} />)
-
-  // screen.debug()
 
   const button = screen.getByText('view')
   await user.click(button)
   screen.debug()
-  //console.log(mockHandler.mock.calls)
-  //expect(mockHandler.mock.calls).toHaveLength(1)
 
   const div = container.querySelector('.blog')
 
@@ -68,7 +62,7 @@ test('handles expanded blog when clicked', async () => {
 
 })
 
-test('clicking the like button twice calls event handler twice', async () => {
+test('clicking the like button twice calls event handler twice (5.15)', async () => {
   const blog = {
     title: 'Component testing is done with react-testing-library',
     url: 'http://www.testing.com',
@@ -80,7 +74,6 @@ test('clicking the like button twice calls event handler twice', async () => {
   }
 
   const mockHandler = jest.fn()
-  //const mockHandler2 = jest.fn()
   const user = userEvent.setup()
 
   render(<Blog
@@ -94,19 +87,9 @@ test('clicking the like button twice calls event handler twice', async () => {
   const button = screen.getByText('view')
   await user.click(button)
 
-  //console.log(mockHandler.mock.calls)
-  //expect(mockHandler.mock.calls).toHaveLength(1)
-
-  //screen.debug()
-
   const button2 = screen.getByText('like')
   await user.click(button2)
   await user.click(button2)
-  //console.log(mockHandler.mock.calls)
   expect(mockHandler.mock.calls).toHaveLength(2)
-
-  /*expect(div).toHaveTextContent(
-    '668'
-  )*/
 
 })
