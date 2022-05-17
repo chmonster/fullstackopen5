@@ -25,9 +25,12 @@ const Blog = ({ blog, user, incLike, deleteBlog }) => {
           {blog.title}
         </a></td>
         <td style={{ textAlign:'right' }}>
-          {blog.author}<button onClick={toggleExpand}>{buttonText}</button>
+          {blog.author}
+          <button className={buttonText} onClick={toggleExpand}>
+            {buttonText}
+          </button>
           {user && user.username === blog.user.username &&
-            <button onClick={() => deleteBlog(blog)}>delete</button>
+            <button className='delete' onClick={() => deleteBlog(blog)}>delete</button>
           }
         </td>
       </tr>
@@ -39,7 +42,7 @@ const Blog = ({ blog, user, incLike, deleteBlog }) => {
           <td>Posted by: {blog.user.name}</td>
           <td style={{ textAlign:'right' }}>
             Likes: {blog.likes}
-            <button onClick={() => incLike(blog)}>like</button>
+            <button className='like' onClick={() => incLike(blog)}>like</button>
           </td>
         </tr>
       }

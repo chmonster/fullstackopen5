@@ -26,6 +26,7 @@ const LoginForm = forwardRef((props, ref) => {
           type="text"
           value={username}
           name="Username"
+          id='username'
           onChange={handleUsernameChange}
         />
         Password:
@@ -33,10 +34,11 @@ const LoginForm = forwardRef((props, ref) => {
           type="password"
           value={password}
           name="Password"
+          id='password'
           onChange={handlePasswordChange}
         />
         <br />
-        <button type="submit">log in</button>
+        <button id='login-button' type="submit">log in</button>
       </form>
     </div>
   )

@@ -36,16 +36,16 @@ const BlogEntryForm = ({ createBlog }) => {
         <table><tbody>
           <tr style={{ display: 'flex', justifyContent: 'center' }}>
             <td>
-              <input value={newTitle} onChange={handleTitleChange} placeholder = 'title' />
+              <input id='title' value={newTitle} onChange={handleTitleChange} placeholder = 'title' />
             </td>
             <td>
-              <input value={newUrl} onChange={handleUrlChange} placeholder = 'URL' />
+              <input id='url' value={newUrl} onChange={handleUrlChange} placeholder = 'URL' />
             </td>
             <td>
-              <input value={newAuthor} onChange={handleAuthorChange} placeholder='author' />
+              <input id='author' value={newAuthor} onChange={handleAuthorChange} placeholder='author' />
             </td>
             <td>
-              <button type="submit">save</button>
+              <button id='save-button' type="submit">save</button>
             </td>
           </tr>
         </tbody></table>
